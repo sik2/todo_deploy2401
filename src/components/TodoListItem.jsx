@@ -22,7 +22,7 @@ function TodoListItem({todo}) {
     return ( 
         <div style={{ textDecoration: is_checked ? 'line-through' : 'none' }}>
             <input type="checkbox" checked={is_checked} onChange={() => onToggle(id)} />
-            {id}<span>번 :{content}</span>
+            {id}<span>번 : {content}</span>
             <button onClick={() => onDelete(id)}>삭제</button>
         </div> 
     );
