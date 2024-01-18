@@ -1,12 +1,10 @@
 import { useState } from "react";
 
-function TodoInsert() {
-
+function TodoInsert({setTodos}) {
     const [text, setText] = useState('')
 
-
-    const onInsert = (text) => {
-        fetch(`https://todo-deploy2401.fly.dev/api/v1/todos`, {
+    const onInsert = async (text) => {
+        await fetch(`https://todo-deploy2401.fly.dev/api/v1/todos`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
@@ -15,6 +13,10 @@ function TodoInsert() {
                 content: text
             })
         })
+
+        await fetch("https://todo-deploy2401.fly.dev/api/v1/todos")
+            .then((res) => res.json())
+            .then((result) => setTodos(result.data));
     }
 
     const onChange = (e) => {
