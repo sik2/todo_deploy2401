@@ -9,7 +9,7 @@ function TodoList() {
         fetch("https://todo-deploy2401.fly.dev/api/v1/todos")
         .then((res) => res.json())
         .then((result) => setTodos(result.data));
-    }, [todos])
+    }, [])
 
     return ( 
         <div>
